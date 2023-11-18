@@ -1,0 +1,79 @@
+<OrchestrationStep Order="1" Type="ClaimsExchange">
+  <Preconditions>
+    <Precondition Type="ClaimEquals" ExecuteActionsIf="true">
+      <Value>email</Value>
+      <Value></Value>
+    </Precondition>
+    <Precondition Type="ClaimEquals" ExecuteActionsIf="true">
+      <Value>phone</Value>
+      <Value></Value>
+    </Precondition>
+  </Preconditions>
+  <ClaimsExchanges>
+    <ClaimsExchange Id="VerifyEmailExchange" TechnicalProfileReferenceId="ACTION_OTP_001" />
+  </ClaimsExchanges>
+</OrchestrationStep>
+
+<OrchestrationStep Order="2" Type="ClaimsExchange">
+  <Preconditions>
+    <Precondition Type="ClaimEquals" ExecuteActionsIf="true">
+      <Value>email</Value>
+      <Value></Value>
+    </Precondition>
+    <Precondition Type="NegatedPrecondition" ExecuteActionsIf="true">
+      <Preconditions>
+        <Precondition Type="ClaimEquals">
+          <Value>phone</Value>
+          <Value></Value>
+        </Precondition>
+      </Preconditions>
+    </Precondition>
+  </Preconditions>
+  <ClaimsExchanges>
+    <ClaimsExchange Id="VerifyEmailExchange" TechnicalProfileReferenceId="ACTION_OTP_002" />
+  </ClaimsExchanges>
+</OrchestrationStep>
+
+<OrchestrationStep Order="3" Type="ClaimsExchange">
+  <Preconditions>
+    <Precondition Type="NegatedPrecondition" ExecuteActionsIf="true">
+      <Preconditions>
+        <Precondition Type="ClaimEquals">
+          <Value>email</Value>
+          <Value></Value>
+        </Precondition>
+      </Preconditions>
+    </Precondition>
+    <Precondition Type="ClaimEquals" ExecuteActionsIf="true">
+      <Value>phone</Value>
+      <Value></Value>
+    </Precondition>
+  </Preconditions>
+  <ClaimsExchanges>
+    <ClaimsExchange Id="VerifyPhoneExchange" TechnicalProfileReferenceId="ACTION_OTP_003" />
+  </ClaimsExchanges>
+</OrchestrationStep>
+
+<OrchestrationStep Order="4" Type="ClaimsExchange">
+  <Preconditions>
+    <Precondition Type="NegatedPrecondition" ExecuteActionsIf="true">
+      <Preconditions>
+        <Precondition Type="ClaimEquals">
+          <Value>email</Value>
+          <Value></Value>
+        </Precondition>
+      </Preconditions>
+    </Precondition>
+    <Precondition Type="NegatedPrecondition" ExecuteActionsIf="true">
+      <Preconditions>
+        <Precondition Type="ClaimEquals">
+          <Value>phone</Value>
+          <Value></Value>
+        </Precondition>
+      </Preconditions>
+    </Precondition>
+  </Preconditions>
+  <ClaimsExchanges>
+    <ClaimsExchange Id="VerifyEmailAndPhoneExchange" TechnicalProfileReferenceId="ACTION_OTP_004" />
+  </ClaimsExchanges>
+</OrchestrationStep>
